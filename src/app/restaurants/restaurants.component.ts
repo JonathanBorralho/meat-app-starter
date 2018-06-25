@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from './restaurant/restaurant.model';
+import { RestaurantsService } from './restaurants.service';
 
 @Component({
   selector: 'mt-restaurants',
@@ -7,28 +8,12 @@ import { Restaurant } from './restaurant/restaurant.model';
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants: Restaurant[] = [
-    {
-      id: 'coffee-corner',
-      name: 'Coffee Corner',
-      category: 'Coffee Shop',
-      deliveryEstimate: '30-40m',
-      rating: 4.8,
-      imagePath: 'assets/img/restaurants/coffeecorner.png'
-    },
-    {
-      id: 'green-food',
-      name: 'Green Food',
-      category: 'Saudável',
-      deliveryEstimate: '75m',
-      rating: 4.1,
-      imagePath: 'assets/img/restaurants/greenfood.png'
-    }
-  ];
+  restaurants: Restaurant[] = [];
 
-  constructor() { }
+  constructor(private restaurantsService: RestaurantsService) { }
 
   ngOnInit() {
+    this.restaurants = this.restaurantsService.restaurants();
   }
 
 }
