@@ -370,5 +370,23 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Avenida Clodomir Cardoso",
+      "number": "1901",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 3,
+          "menuId": "straw"
+        },
+        {
+          "quantity": 2,
+          "menuId": "cup"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
