@@ -9,7 +9,12 @@ import { RatingComponent } from './rating/rating.component';
   declarations: [InputContainerComponent, RadioComponent, RatingComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
-    InputContainerComponent, RadioComponent, RatingComponent
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputContainerComponent,
+    RadioComponent,
+    RatingComponent
   ]
 })
 export class SharedModule {
