@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,8 +36,7 @@ import { ROUTES } from './app.route';
   imports: [
     BrowserModule,
     HttpModule,
-    CoreModule,
-    SharedModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ {provide: LOCALE_ID, useValue: 'pt-BR'} ],
