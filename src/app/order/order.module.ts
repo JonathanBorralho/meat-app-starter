@@ -10,8 +10,15 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [OrderComponent, OrderItemsComponent, DeliveryCostsComponent],
-  imports: [SharedModule, RouterModule.forChild(ROUTES)]
+  declarations: [
+    OrderComponent,
+    OrderItemsComponent,
+    DeliveryCostsComponent
+  ],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(ROUTES)
+  ]
 })
 export class OrderModule {
 
