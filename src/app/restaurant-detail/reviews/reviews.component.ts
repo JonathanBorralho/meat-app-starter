@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from './../../restaurants/restaurants.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { listItemAppeared } from '../../animations/app.animations';
 
 @Component({
   selector: 'mt-reviews',
-  templateUrl: './reviews.component.html'
+  templateUrl: './reviews.component.html',
+  animations: [ listItemAppeared ]
 })
 export class ReviewsComponent implements OnInit {
 
