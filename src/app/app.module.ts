@@ -19,6 +19,7 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 import { ROUTES } from './app.route';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ROUTES } from './app.route';
     MenuItemComponent,
     ReviewsComponent,
     OrderSummaryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
