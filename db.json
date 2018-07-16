@@ -469,6 +469,30 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "Jonathan Sousa Rosendo",
+      "email": "jonathan.borralho@gmail.com",
+      "emailConfirmation": "jonathan.borralho@gmail.com",
+      "address": "Avenida Clodomir Cardoso",
+      "number": "1901",
+      "optionalAddress": "complemento",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "cup-cake"
+        },
+        {
+          "quantity": 1,
+          "menuId": "donut"
+        },
+        {
+          "quantity": 1,
+          "menuId": "bread"
+        }
+      ],
+      "id": 6
     }
   ]
 }
