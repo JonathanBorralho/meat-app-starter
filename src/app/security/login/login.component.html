@@ -6,7 +6,7 @@
 		<div class="col-xs-12 col-sm-offset-3 col-sm-6 login-box-body">
 			<p class="login-box-msg">Por favor, efetue o login para continuar</p>
 
-			<form [formGroup]="formLogin">
+			<form [formGroup]="formLogin" autocomplete="off">
 				<mt-input-container [showTip]="false">
 					<input type="text" formControlName="email" class="form-control" placeholder="Email">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -19,7 +19,7 @@
 
 				<div class="row">
 					<div class="col-xs-offset-8 col-xs-4">
-						<button type="submit" [disabled]="formLogin.invalid" class="btn btn-primary btn-block btn-flat">Entrar</button>
+						<button type="submit" (click)="login()" [disabled]="formLogin.invalid" class="btn btn-primary btn-block btn-flat">Entrar</button>
 					</div>
 				</div>
 			</form>
