@@ -9,6 +9,7 @@ export class InputContainerComponent implements OnInit, AfterContentInit {
 
   @Input() label: string;
   @Input() errorMessage: string;
+  @Input() showTip = true;
 
   @ContentChild(NgModel) model: NgModel;
   @ContentChild(FormControlName) control: FormControlName;
