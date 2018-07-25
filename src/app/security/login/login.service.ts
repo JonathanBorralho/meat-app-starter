@@ -10,7 +10,7 @@ import { MEAT_API } from '../../app.api';
 @Injectable()
 export class LoginService {
 
-  private loggedUser: User;
+  loggedUser: User;
 
   constructor(private http: HttpClient) {}
 
