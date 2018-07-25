@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate } from '../../../../../node_modules/@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export const snackVisibility = trigger('snack-visibility', [
   state('hidden', style({

@@ -1,4 +1,4 @@
-import { EventEmitter } from '../../../../node_modules/@angular/core';
+import { EventEmitter } from '@angular/core';
 
 export class NotificationService {
   notifier = new EventEmitter<any>();

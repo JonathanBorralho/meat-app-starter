@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { snackVisibility } from './snack-visibility.animation';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
+
+import { snackVisibility } from './snack-visibility.animation';
 import { NotificationService } from '../notification.service';
 
 @Component({

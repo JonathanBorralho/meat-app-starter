@@ -1,4 +1,4 @@
-import { state, trigger, style, transition, animate, keyframes } from '../../../node_modules/@angular/animations';
+import { state, trigger, style, transition, animate, keyframes } from '@angular/animations';
 
 export const restaurantAppeared = trigger('restaurantAppeared', [
   state('ready', style({ opacity: 1})),

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { state, trigger, style, transition, animate } from '../../../node_modules/@angular/animations';
-import { Restaurant } from './restaurant/restaurant.model';
-import { RestaurantsService } from './restaurants.service';
-import { FormBuilder, FormGroup, FormControl } from '../../../node_modules/@angular/forms';
-import { Observable } from '../../../node_modules/rxjs/Observable';
+import { state, trigger, style, transition, animate } from '@angular/animations';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Restaurant } from './restaurant/restaurant.model';
+import { RestaurantsService } from './restaurants.service';
 
 @Component({
   selector: 'mt-restaurants',
