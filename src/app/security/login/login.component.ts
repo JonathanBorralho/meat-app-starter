@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
               private notificationService: NotificationService) {}
 
   ngOnInit() {
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/';
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/');
 
     this.formLogin = this.fb.group({
       email: this.fb.control('', [Validators.required, Validators.email]),
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user: User) => this.notificationService.notify(`Bem vindo(a), ${user.name}.`),
         (resp: HttpErrorResponse) => this.notificationService.notify(resp.error.message),
-        () => this.router.navigate([this.navigateTo])
+        () => this.router.navigate([ atob(this.navigateTo) ])
       );
   }
 }
