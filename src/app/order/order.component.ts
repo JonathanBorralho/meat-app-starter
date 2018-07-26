@@ -6,12 +6,15 @@ import { RadioOption } from './../shared/radio/radio-option.model';
 import { OrderService } from './order.service';
 import { Order, OrderItem } from './order.model';
 import { CartItem } from './../restaurant-detail/shopping-cart/cart-item.model';
+import { LoginService } from '../security/login/login.service';
+import { User } from '../security/login/user.model';
 
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
+  user: User;
   orderForm: FormGroup;
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   numberPattern = /^[0-9]*$/;
@@ -38,13 +41,18 @@ export class OrderComponent implements OnInit {
     return undefined;
   }
 
-  constructor(private orderService: OrderService, private router: Router, private fb: FormBuilder) { }
+  constructor(private orderService: OrderService,
+              private loginService: LoginService,
+              private router: Router,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.user = this.loginService.loggedUser;
+
     this.orderForm = this.fb.group({
-      name: this.fb.control('', [Validators.required, Validators.minLength(5)]),
-      email: this.fb.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      emailConfirmation: this.fb.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      name: this.fb.control(this.user.name || '', [Validators.required, Validators.minLength(5)]),
+      email: this.fb.control(this.user.email || '', [Validators.required, Validators.pattern(this.emailPattern)]),
+      emailConfirmation: this.fb.control(this.user.email || '', [Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.fb.control('', [Validators.required, Validators.minLength(5)]),
       number: this.fb.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: '',

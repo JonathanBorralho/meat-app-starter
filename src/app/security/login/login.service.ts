@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
@@ -12,7 +13,11 @@ export class LoginService {
 
   loggedUser: User;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
+
+  handleLogin(path?: string) {
+    this.router.navigate(['/login', path]);
+  }
 
   isLoggedIn(): boolean {
     return this.loggedUser !== undefined;
