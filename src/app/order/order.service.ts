@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -40,11 +40,7 @@ export class OrderService {
   }
 
   checkOrder(order: Order): Observable<string> {
-    let headers = new HttpHeaders();
-    if (this.loginService.isLoggedIn()) {
-      headers = headers.set('Authorization', `Bearer ${this.loginService.loggedUser.accessToken}`);
-    }
-    return this.http.post<Order>(`${MEAT_API}/orders`, order, {headers: headers})
+    return this.http.post<Order>(`${MEAT_API}/orders`, order)
       .map(orderResp => orderResp.id);
   }
 }
