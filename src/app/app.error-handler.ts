@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/throw';
 import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 
 export class ErrorHandler {
@@ -12,6 +11,6 @@ export class ErrorHandler {
       errorMessage = error.toString();
     }
     console.log(errorMessage);
-    return Observable.throw(errorMessage);
+    return throwError(errorMessage);
   }
 }
