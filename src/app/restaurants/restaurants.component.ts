@@ -3,7 +3,7 @@ import { state, trigger, style, transition, animate } from '@angular/animations'
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { Observable, from } from 'rxjs';
-import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged, catchError, tap } from 'rxjs/operators';
 
 import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurants.service';
@@ -28,6 +28,8 @@ import { RestaurantsService } from './restaurants.service';
 })
 export class RestaurantsComponent implements OnInit {
   searchBarState = 'hidden';
+  isLoading = false;
+  isEmpty = false;
   restaurants: Restaurant[];
 
   searchForm: FormGroup;
@@ -41,22 +43,26 @@ export class RestaurantsComponent implements OnInit {
     this.searchForm = this.fb.group({
       searchControl: this.searchControl
     });
-
     this.searchControl.valueChanges
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
         switchMap(
           searchTerm => this.restaurantsService.restaurants(searchTerm)
-            .pipe(
-              catchError(error => from([]))
-            )
+            .pipe(catchError(error => from([])))
         )
       )
-      .subscribe(rest => this.restaurants = rest);
+      .subscribe(rest => {
+        this.isEmpty = rest.length === 0;
+        this.restaurants = rest;
+      });
 
+    this.isLoading = true;
     this.restaurantsService.restaurants()
-      .subscribe(rest => this.restaurants = rest);
+      .subscribe(rest => {
+        this.restaurants = rest;
+        this.isLoading = false;
+      });
   }
 
   toggleSearchBar() {

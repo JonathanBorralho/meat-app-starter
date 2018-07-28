@@ -11,14 +11,20 @@ import { listItemAppeared } from '../../animations/app.animations';
 })
 export class ReviewsComponent implements OnInit {
 
-  reviews$: Observable<any>;
+  reviews: any[];
   imageUrl = 'assets/img/reactions';
+  isLoading = false;
 
   constructor(private restaurantsService: RestaurantsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id: string = this.route.parent.snapshot.params['id'];
-    this.reviews$ = this.restaurantsService.reviewsOfRestaurant(id);
+    this.isLoading = true;
+    this.restaurantsService.reviewsOfRestaurant(id)
+      .subscribe(r => {
+        this.reviews = r;
+        this.isLoading = false;
+      });
   }
 
   reviewUrlImage(rating: number): string {

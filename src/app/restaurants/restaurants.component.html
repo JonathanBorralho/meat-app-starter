@@ -26,11 +26,13 @@
         <mt-restaurant [restaurant]="restaurant"></mt-restaurant>
       </div>
 
-      <div *ngIf="!restaurants?.length" class="col-xs-12">
+      <div *ngIf="isEmpty" class="col-xs-12">
         <p class="lead text-center">
           Não foram encontrados itens para a sua busca.
         </p>
       </div>
+
+      <mt-loading [isLoading]="isLoading"></mt-loading>
     </div>
 
   </section>
