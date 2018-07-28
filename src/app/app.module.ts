@@ -3,7 +3,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt');
 
 import { SharedModule } from './shared/shared.module';
 
@@ -50,7 +53,7 @@ import { ROUTES } from './app.route';
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    {provide: LOCALE_ID, useValue: 'pt-BR'}
+    {provide: LOCALE_ID, useValue: 'pt'}
   ],
   bootstrap: [AppComponent]
 })
