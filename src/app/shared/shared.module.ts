@@ -15,9 +15,10 @@ import { LoginService } from '../security/login/login.service';
 import { LoggedInGuard } from '../security/loggedin.guard';
 import { LeaveOrderGuard } from '../order/leave-order.guard';
 import { AuthInterceptor } from '../security/auth.interceptor';
+import { AutofocusDirective } from './autofocus/autofocus.directive';
 
 @NgModule({
-  declarations: [InputContainerComponent, RadioComponent, RatingComponent, SnackbarComponent],
+  declarations: [InputContainerComponent, RadioComponent, RatingComponent, SnackbarComponent, AutofocusDirective],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { AuthInterceptor } from '../security/auth.interceptor';
     InputContainerComponent,
     RadioComponent,
     RatingComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    AutofocusDirective
   ]
 })
 export class SharedModule {

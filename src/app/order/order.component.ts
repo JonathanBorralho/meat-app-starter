@@ -49,15 +49,15 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.user = this.loginService.loggedUser;
 
-    this.orderForm = this.fb.group({
+    this.orderForm = new FormGroup({
       name: this.fb.control(this.user.name || '', [Validators.required, Validators.minLength(5)]),
       email: this.fb.control(this.user.email || '', [Validators.required, Validators.pattern(this.emailPattern)]),
-      emailConfirmation: this.fb.control(this.user.email || '', [Validators.required, Validators.pattern(this.emailPattern)]),
+      emailConfirmation: this.fb.control( this.user.email || '', [Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.fb.control('', [Validators.required, Validators.minLength(5)]),
       number: this.fb.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
-      optionalAddress: '',
+      optionalAddress: this.fb.control(''),
       paymentOption: this.fb.control('', Validators.required)
-    }, {validator: OrderComponent.equalsTo});
+    }, {validators: [OrderComponent.equalsTo], updateOn: 'blur'});
   }
 
   get orderItems(): CartItem[] {

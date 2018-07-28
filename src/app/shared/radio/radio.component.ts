@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { RadioOption } from './radio-option.model';
@@ -20,6 +20,7 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
 
   value: any;
   onChange: any;
+  onTouched: any;
 
   constructor() { }
 
@@ -29,6 +30,7 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
   setValue(value: any) {
     this.value = value;
     this.onChange(this.value);
+    this.onTouched();
   }
 
   writeValue(obj: any): void {
@@ -39,6 +41,8 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
 }
