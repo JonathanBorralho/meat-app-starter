@@ -47,6 +47,7 @@ export class RestaurantsComponent implements OnInit {
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
+        tap(() => this.isLoading = true),
         switchMap(
           searchTerm => this.restaurantsService.restaurants(searchTerm)
             .pipe(catchError(error => from([])))
@@ -55,6 +56,7 @@ export class RestaurantsComponent implements OnInit {
       .subscribe(rest => {
         this.isEmpty = rest.length === 0;
         this.restaurants = rest;
+        this.isLoading = false;
       });
 
     this.isLoading = true;
