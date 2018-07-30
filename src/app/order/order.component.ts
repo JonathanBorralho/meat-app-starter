@@ -19,6 +19,7 @@ export class OrderComponent implements OnInit {
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   numberPattern = /^[0-9]*$/;
   delivery = 8;
+  isSubmitLoading = false;
 
   paymentOptions: RadioOption[] = [
     {label: 'Dinheiro', value: 'MON'},
@@ -82,7 +83,9 @@ export class OrderComponent implements OnInit {
 
   checkOrder(order: Order) {
     order.orderItems = this.orderItems.map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id));
+    this.isSubmitLoading = true;
     this.orderService.checkOrder(order).subscribe(_order => {
+      this.isSubmitLoading = false;
       this.router.navigate(['/order-summary']);
       this.orderService.clear();
     });
