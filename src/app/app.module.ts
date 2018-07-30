@@ -49,7 +49,10 @@ import { ROUTES } from './app.route';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule.forRoot(),
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(
+      ROUTES,
+      // {preloadingStrategy: PreloadAllModules}
+    )
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
