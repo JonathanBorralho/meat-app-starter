@@ -42,7 +42,7 @@ import { ROUTES } from './app.route';
     ReviewsComponent,
     OrderSummaryComponent,
     NotFoundComponent,
-    UserDetailComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +51,7 @@ import { ROUTES } from './app.route';
     SharedModule.forRoot(),
     RouterModule.forRoot(
       ROUTES,
+      // {enableTracing: true}
       // {preloadingStrategy: PreloadAllModules}
     )
   ],

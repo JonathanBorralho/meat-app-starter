@@ -17,9 +17,18 @@ import { LeaveOrderGuard } from '../order/leave-order.guard';
 import { AuthInterceptor } from '../security/auth.interceptor';
 import { AutofocusDirective } from './autofocus/autofocus.directive';
 import { LoadingComponent } from './loading/loading.component';
+import { LoadingLinkDirective } from './loadingLink/loading-link.directive';
 
 @NgModule({
-  declarations: [InputContainerComponent, RadioComponent, RatingComponent, SnackbarComponent, AutofocusDirective, LoadingComponent],
+  declarations: [
+      InputContainerComponent,
+      RadioComponent,
+      RatingComponent,
+      SnackbarComponent,
+      AutofocusDirective,
+      LoadingLinkDirective,
+      LoadingComponent
+    ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
     CommonModule,
@@ -30,6 +39,7 @@ import { LoadingComponent } from './loading/loading.component';
     RatingComponent,
     SnackbarComponent,
     AutofocusDirective,
+    LoadingLinkDirective,
     LoadingComponent
   ]
 })
@@ -45,6 +55,7 @@ export class SharedModule {
         LoginService,
         LoggedInGuard,
         LeaveOrderGuard,
+        LoadingLinkDirective,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
       ]
     };
